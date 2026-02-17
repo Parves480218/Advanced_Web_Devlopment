@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gray-100 p-10">
+  <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+    <h1 class="text-3xl font-bold mb-6">Bookings</h1>
+
+    <table class="w-full border text-left">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="p-3">Resource</th>
+          <th class="p-3">Start</th>
+          <th class="p-3">End</th>
+        </tr>
+      </thead>
+      <tbody id="bookingTable"></tbody>
+    </table>
+
+    <a href="/" class="inline-block mt-6 text-blue-600 hover:underline">
+      ← Back to Home
+    </a>
+  </div>
+
+  <script>
+    fetch("/api/bookings")
+      .then(res => res.json())
+      .then(data => {
+        const table = document.getElementById("bookingTable");
+
+        data.forEach(b => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td class="p-3 border">${b.resource}</td>
+            <td class="p-3 border">${b.start}</td>
+            <td class="p-3 border">${b.end}</td>
+          `;
+          table.appendChild(row);
+        });
+      });
+  </script>
+</body>
+</html>
