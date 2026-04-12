@@ -16,6 +16,8 @@ function FormPage() {
   const [submitMessage, setSubmitMessage] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+  const today = new Date().toISOString().split('T')[0]
+
   function handleChange(event) {
     const { name, value, type, checked } = event.target
 
@@ -42,10 +44,12 @@ function FormPage() {
 
     if (!values.bookingDate) {
       newErrors.bookingDate = 'Booking date is required.'
+    } else if (values.bookingDate < today) {
+      newErrors.bookingDate = 'Past dates are not allowed.'
     }
 
     const guestCount = Number(values.guests)
-    if (!guestCount || guestCount < 1 || guestCount > 10) {
+    if (!Number.isInteger(guestCount) || guestCount < 1 || guestCount > 10) {
       newErrors.guests = 'Guests must be between 1 and 10.'
     }
 
@@ -62,7 +66,6 @@ function FormPage() {
     const validationErrors = validate(formData)
     setErrors(validationErrors)
     setSubmitMessage('')
-    setResponseData(null)
 
     if (Object.keys(validationErrors).length > 0) {
       setSubmitMessage('Please fix the errors before submitting.')
@@ -70,6 +73,7 @@ function FormPage() {
     }
 
     setIsSubmitting(true)
+    setResponseData(null)
 
     try {
       const response = await fetch('https://httpbin.org/post', {
@@ -81,14 +85,14 @@ function FormPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Submission failed')
+        throw new Error('Submission failed.')
       }
 
       const data = await response.json()
       setResponseData(data)
       setSubmitMessage('Form submitted successfully.')
-      setErrors({})
       setFormData(initialForm)
+      setErrors({})
     } catch (error) {
       setSubmitMessage('Something went wrong while sending the form.')
     } finally {
@@ -102,7 +106,8 @@ function FormPage() {
         <div className="container">
           <h1>Booking Form</h1>
           <p>
-            Fill in the form below to send your booking request.
+            Fill in the form below to send your booking request. This page matches
+            the same application theme and sends the data to httpbin.
           </p>
         </div>
       </section>
@@ -142,6 +147,7 @@ function FormPage() {
                 id="bookingDate"
                 name="bookingDate"
                 type="date"
+                min={today}
                 value={formData.bookingDate}
                 onChange={handleChange}
               />
