@@ -1,0 +1,193 @@
+:root {
+  --primary: #e10e49;
+  --dark: #1e1e1e;
+  --light: #ffffff;
+  --muted: #f4f4f6;
+  --border: #dddddd;
+  --accent: #263f6a;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --radius: 12px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--muted);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Layout Containers */
+.container { 
+  width: min(100% - 2rem, 1200px); 
+  margin: 0 auto; 
+}
+
+/* Header Section */
+.site-header { 
+  background: var(--primary); 
+  color: white; 
+  padding: 1.5rem 0; 
+}
+
+.header-grid { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.site-title { margin: 0; }
+.site-title-link { color: white; text-decoration: none; }
+.site-tagline { margin: 0; opacity: 0.9; font-size: 0.9rem; }
+
+.author-card { 
+  background: rgba(255,255,255,0.2); 
+  padding: 0.5rem 1rem; 
+  border-radius: 8px; 
+}
+.author-card p { margin: 0; font-size: 0.85rem; }
+
+/* Main Content Area */
+main { padding: 2rem 0; flex: 1; }
+.layout { display: grid; gap: 1.5rem; }
+.hero-card { background: white; padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); }
+
+.content-grid { display: grid; gap: 1.5rem; }
+@media (min-width: 900px) { 
+  .content-grid { grid-template-columns: 1fr 1fr; } 
+}
+
+.panel { 
+  background: white; 
+  padding: 1.5rem; 
+  border-radius: var(--radius); 
+  box-shadow: var(--shadow); 
+}
+
+/* Form Styling */
+.mgmt-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+.form-group label { font-weight: bold; color: var(--accent); font-size: 0.9rem; }
+.form-group input { 
+  padding: 0.7rem; 
+  border: 1px solid var(--border); 
+  border-radius: 6px; 
+  font-size: 1rem;
+}
+
+/* In-Page Validation Messages */
+.ui-msg { 
+  padding: 10px; 
+  margin-bottom: 15px; 
+  border-radius: 6px; 
+  font-weight: bold; 
+  text-align: center; 
+  font-size: 0.9rem; 
+  display: none; 
+}
+.error-ui { display: block; background: #ffe6e6; color: #cc0000; border: 1px solid #ffcccc; }
+.success-ui { display: block; background: #e6ffed; color: #00802b; border: 1px solid #ccffda; }
+
+/* Buttons */
+.button-group { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+button { 
+  padding: 0.7rem; 
+  border-radius: 6px; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: bold; 
+  color: white; 
+  transition: opacity 0.2s;
+}
+button:hover { opacity: 0.9; }
+
+.btn-primary { background: var(--primary); }
+.btn-secondary { background: #6c757d; }
+.btn-danger { background: #dc3545; }
+
+/* Customer List Cards */
+.customer-card { 
+  border-left: 4px solid var(--primary); 
+  padding: 1rem; 
+  margin-bottom: 0.5rem; 
+  background: #fff; 
+  cursor: pointer; 
+  border-radius: 6px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+}
+.customer-card:hover { background: #f9f9f9; }
+.customer-card.active { 
+  background: #fff0f3; 
+  border-color: var(--accent); 
+}
+
+/* --- MODAL FIXES (HIGH PRIORITY) --- */
+.modal { 
+  position: fixed; 
+  inset: 0; 
+  background: rgba(0,0,0,0.7) !important; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 9999 !important; 
+}
+
+.modal-box { 
+  background: #ffffff !important; 
+  padding: 30px !important; 
+  border-radius: 12px; 
+  text-align: center; 
+  max-width: 450px; 
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3); 
+}
+
+.modal-title {
+  color: #1a1a1a !important;
+  margin-top: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.modal-text { 
+  color: #333333 !important; 
+  display: block !important;
+  visibility: visible !important;
+  font-size: 1.1rem !important; 
+  font-weight: 500 !important; 
+  margin: 20px 0 !important; 
+  line-height: 1.5;
+}
+
+.modal-buttons { 
+  display: flex; 
+  justify-content: center; 
+  gap: 15px; 
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  min-width: 100px;
+  padding: 10px 20px;
+}
+
+.hidden { 
+  display: none !important; 
+}
+
+/* Footer */
+.site-footer { 
+  background: var(--dark); 
+  color: white; 
+  text-align: center; 
+  padding: 1rem; 
+  margin-top: 2rem; 
+}
+
+/* Add this to the bottom of your styles.css to force visibility */
+.modal-box * {
+  color: #000000 !important;
+  visibility: visible !important;
+  display: block !important;
+}

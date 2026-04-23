@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClientCore | Customer Registry</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container header-grid">
+        <section>
+          <h1 class="site-title">
+            <a href="/" class="site-title-link">ClientCore</a>
+          </h1>
+          <p class="site-tagline">A minimal customer registry system.</p>
+        </section>
+
+        <aside class="author-card">
+          <p><strong>Author:</strong> <span id="author-name">Parves Mosharof Imran</span></p>
+          <p><strong>Group ID:</strong> <span id="group-id">AITS24P</span></p>
+        </aside>
+      </div>
+
+      <div id="confirmModal" class="modal hidden">
+        <div class="modal-box">
+          <p class="modal-text">Are you sure you want to delete this customer?</p>
+          <div class="modal-buttons">
+            <button id="confirmYes" class="btn-danger">Yes, Delete</button>
+            <button id="confirmNo" class="btn-secondary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container layout">
+        <section class="hero-card">
+          <h2>System Overview</h2>
+          <p>Manage your database records. Note: Dates cannot be selected in the past.</p>
+        </section>
+
+        <div class="content-grid">
+          <section class="panel">
+            <h2>Customer Management</h2>
+            <div id="customer-form">
+              <div id="ui-message-bar"></div>
+              <form id="form" class="mgmt-form">
+                <input type="hidden" id="customer-id" />
+                <div class="form-group">
+                  <label for="first_name">First Name</label>
+                  <input type="text" id="first_name" placeholder="Letters only" required />
+                </div>
+                <div class="form-group">
+                  <label for="last_name">Last Name</label>
+                  <input type="text" id="last_name" placeholder="Letters only" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" placeholder="example@mail.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" placeholder="e.g. +358 123 456" />
+                </div>
+                <div class="form-group">
+                  <label for="birth_date">Select Date</label>
+                  <input type="date" id="birth_date" />
+                </div>
+                <div class="button-group">
+                  <button type="submit" id="saveBtn" class="btn-primary">Save</button>
+                  <button type="button" id="clearBtn" class="btn-secondary">Clear</button>
+                  <button type="button" id="deleteBtn" class="btn-danger">Delete</button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>Customer Records</h2>
+            <div id="customer-list"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 Customer Registry System</p>
+      </div>
+    </footer>
+  </body>
+</html>
