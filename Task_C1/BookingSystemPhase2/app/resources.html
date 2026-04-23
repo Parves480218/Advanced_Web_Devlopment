@@ -32,20 +32,10 @@
     </script>
     <script defer src="resources.js"></script>
     <script defer src="form.js"></script>
-    <style>
-        /* Green border for valid input */
-        .valid {
-            border: 2px solid green;
-        }
-
-        /* Red border for invalid input */
-        .invalid {
-            border: 2px solid red;
-        }
-    </style>
 </head>
 
 <body class="min-h-screen flex flex-col bg-brand-light text-brand-dark">
+
 
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-brand-dark text-white shadow-soft">
@@ -122,10 +112,7 @@
                                 <label for="resourceName" class="block text-sm font-semibold">
                                     Resource name
                                 </label>
-                                <div id="resourceNameContainer">
-                                    <input type="text" id="resourceName" name="resourceName" placeholder="Enter resource name"
-                                        class="mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30 transition-all duration-200 ease-out">
-                                </div>
+                                <div id="resourceNameContainer"></div>
                                 <p class="mt-2 text-xs text-black/50">
                                     Use a short, unique name users recognize (5–30 characters). Use letters, numbers,
                                     and spaces only.
@@ -137,7 +124,7 @@
                                 <label for="resourceDescription" class="block text-sm font-semibold">
                                     Resource description
                                 </label>
-                                <textarea id="resourceDesc" name="resourceDescription" rows="5"
+                                <textarea id="resourceDescription" name="resourceDescription" rows="5"
                                     placeholder="Describe location, capacity, included equipment, or any usage notes…"
                                     class="mt-2 w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm outline-none
                          focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/30 transition-all duration-200 ease-out"></textarea>
@@ -200,6 +187,7 @@
                                         </span>
                                     </div>
 
+
                                     <!-- Price unit (Radio buttons) -->
                                     <div class="mt-4 flex flex-wrap gap-4">
                                         <label class="inline-flex items-center gap-2 cursor-pointer">
@@ -230,16 +218,10 @@
 
                             </div>
 
+
                             <!-- Actions -->
                             <div id="resourceActions"
                                 class="mt-8 grid gap-4 w-full grid-cols-1 sm:grid-flow-col sm:auto-cols-fr"></div>
-
-                            <!-- Create Button -->
-                            <button id="createBtn" disabled
-                                class="mt-4 w-full rounded-2xl bg-brand-primary px-6 py-3 text-white font-semibold hover:bg-brand-primary/80 transition-all duration-200">
-                                Create
-                            </button>
-
                         </form>
                     </div>
                 </div>
